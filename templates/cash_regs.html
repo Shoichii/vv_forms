@@ -1,0 +1,41 @@
+{% extends "main_menu.html" %}
+
+
+<a href="{{ url_for('logout') }}">выйти</a>
+
+{% block main %}
+<p class="page-title">Кассы</p>
+<p class="warning">ПРОВЕРИТЬ ДОСТУПНОСТЬ ФР НА ВСЕХ КАССАХ, ПЕРЕВЕСТИ ФР В РЕЖИМ USB, В ПРОТИВНОМ СЛУЧАЕ
+    ПРИДЁТСЯ ВОЗВРАЩАТЬСЯ НА ОБЬЕКТ.</p>
+
+<form class="cash_regs_form" action="{{ url_for('cash_regs') }}" method="POST">
+    <div class="login-field">
+        <p class="field-title">Номер магазина (Цифры) *</p>
+        <input class="field" type="number" name="shop_number" required />
+    </div>
+    <div class="login-field">
+        <p class="field-title">Адрес магазина *</p>
+        <input class="field" type="text" name="shop_address" required />
+    </div>
+    <div class="login-field">
+        <p class="field-title">Подсеть магазина(IP без последней цифры) XXX.XXX.XXX *</p>
+        <input class="field" type="text" name="shop_ip" required />
+    </div>
+    <div class="login-field">
+        <p class="field-title">КСО / КСК / ВСО *</p>
+        <select class="field cash_reg_type" name="cash_reg_type" required>
+            <option></option>
+            <option value="КСО">КСО</option>
+            <option value="КСК">КСК</option>
+            <option value="ВСО">ВСО</option>
+        </select>
+    </div>
+    <div class="cash-regs-froms">
+
+    </div>
+    <input class="send-button" type="submit" value="Отправить">
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='cashRegs.js') }}"></script>{% endblock %}

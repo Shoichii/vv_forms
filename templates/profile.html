@@ -1,0 +1,28 @@
+{% extends "main_menu.html" %}
+
+{% block main %}
+<p class="page-title">Профиль</p>
+<form class="cash_regs_form" action="{{ url_for('profile') }}" method="POST">
+    <div class="login-field">
+        <p class="field-title">ФИО</p>
+        <input class="field" type="text" name="name" value="{{fio}}" />
+    </div>
+    <div class="login-field">
+        <p class="field-title">Телефон</p>
+        <input class="field" type="text" name="phone" value="{{phone}}" />
+    </div>
+    <div class="login-field">
+        <p class="field-title">Новый пароль</p>
+        <input class="field" type="password" name="password" />
+    </div>
+    <div class="login-field">
+        <p class="field-title">Подтверждение пароля</p>
+        <input class="field" type="password" name="password_confirmation" />
+    </div>
+    {% if error %}
+    <p class="error-reg">{{error}}</p>
+    {% endif %}
+    <input class="send-button" type="submit" value="Сохранить">
+</form>
+
+{% endblock %}

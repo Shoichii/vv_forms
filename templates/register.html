@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="reg-title">
+    <p>РЕГИСТРАЦИЯ</p>
+</div>
+<div class="login-wrapper">
+        <form class="login" action="{{ url_for('register') }}" method="POST">
+            <div class="login-field">
+                <input class="field" type="text" name="name" placeholder="ФИО" />
+            </div>
+            <div class="login-field">
+                <input class="field" type="text" name="email" placeholder="email@printgrad.ru" />
+            </div>
+            <div class="login-field">
+                <input class="field" type="text" name="phone" placeholder="телефон" />
+            </div>
+            <div class="login-field">
+                <input class="field" type="password" name="password" placeholder="пароль(8 и более символом)" />
+            </div>
+            <div class="login-field">
+                <input class="field" type="password" name="password_confirmation" placeholder="подтверждение пароля" />
+            </div>
+            <div class="bottom-reg">
+                {% if error %}
+                    <p class="error-reg">{{error}}</p>
+                {% endif %}
+                <input class="send-button" type="submit" value="Зарегистрироваться">
+                <div class="login-links">
+                    <a href="{{ url_for('login') }}">Войти</a>
+                    <a href="{{ url_for('recovery_pass') }}">Забыли пароль?</a>
+                </div>
+            </div>
+        </form>
+</div>
+{% endblock %}

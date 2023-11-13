@@ -1,0 +1,30 @@
+{% extends "main_menu.html" %}
+
+
+<a href="{{ url_for('logout') }}">выйти</a>
+
+{% block main %}
+<p class="page-title">Датчики холода</p>
+<form class="cash_regs_form" action="{{ url_for('cold') }}" method="POST" enctype="multipart/form-data">
+    <div class="login-field">
+        <p class="field-title">Номер магазина (Цифры) *</p>
+        <input class="field" type="number" name="shop_number" required />
+    </div>
+    <div class="login-field">
+        <p class="field-title">Адрес магазина *</p>
+        <input class="field" type="text" name="shop_address" required />
+    </div>
+    <div class="login-field" style="margin-bottom: 50px;">
+        <p class="field-title" style="margin-bottom: 30px;">Схема *</p>
+        <label class="field" for="file">Выбрать файл</label>
+        <input style="opacity: 0;" type="file" name="file" id="file" />
+    </div>
+    <div class="cash-regs-froms">
+
+    </div>
+    <input class="send-button" type="submit" value="Отправить">
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='cold.js') }}"></script>{% endblock %}

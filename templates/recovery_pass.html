@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="rec-pass-title">
+    <p>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</p>
+</div>
+<div class="login-wrapper">
+    <form class="login" action="{{ url_for('recovery_pass') }}" method="POST">
+        <div class="login-field">
+            <input class="field" type="text" name="email" placeholder="email" />
+        </div>
+        {% if error %}
+            <p class="error-reg">{{error}}</p>
+        {% endif %}
+        <div class="bottom-login">
+            <input class="send-button" type="submit" value="Получить код">
+            <div class="login-links">
+                <a href="{{ url_for('login') }}">Войти</a>
+                <a href="{{ url_for('register') }}">Регистрация</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

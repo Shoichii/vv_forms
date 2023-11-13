@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="login-title">
+    <p>ВХОД</p>
+</div>
+<div class="login-wrapper">
+    <form class="login" action="{{ url_for('login') }}" method="POST">
+        <div class="login-field">
+            <input class="field" type="text" name="email" placeholder="email" />
+        </div>
+        <div class="login-field">
+            <input class="field" type="password" name="password" placeholder="пароль" />
+        </div>
+        {% if error %}
+            <p class="error-reg">{{error}}</p>
+        {% endif %}
+        <div class="bottom-login">
+            <input class="send-button" type="submit" value="Войти">
+            <div class="login-links">
+                <a href="{{ url_for('register') }}">Регистрация</a>
+                <a href="{{ url_for('recovery_pass') }}">Забыли пароль?</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

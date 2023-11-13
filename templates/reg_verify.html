@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="rec-pass-title">
+    <p>Укажите код, отправленный на <u>{{email}}</u>.</p>
+</div>
+<div class="login-wrapper">
+    <form class="login" action="{{ url_for('reg_verify', email=email) }}" method="POST">
+        <div class="login-field">
+            <input class="field verify-field" type="text" name="verification_code" placeholder="000000" />
+        </div>
+        {% if error %}
+            <p class="error-reg">{{error}}</p>
+        {% endif %}
+        <div class="bottom-login">
+            <input class="send-button verify-button" type="submit" value="Подтвердить">
+        </div>
+    </form>
+</div>
+{% endblock %}
